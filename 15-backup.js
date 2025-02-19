@@ -1,22 +1,19 @@
 import { keyInYNStrict } from "readline-sync"; // `readline-sync`'i import ediyoruz
-import { accountingPage } from "./01-start.js";
 
-export default function recordsPage() {
-  console.log("Welcome to the Income and Expense Records page!");
+export default function backupPage() {
+  console.clear();
+  console.log("===========================================");
+  console.log("||                                       ||");
+  console.log("||          ACCOUTING PROGRAM            ||");
+  console.log("||             Data Backup               ||");
+  console.log("===========================================");
+  const backup = keyInYNStrict(
+    "Do you want to start the backup process? (yes/no): "
+  );
 
-  const income = 1000;
-  const expense = 500;
-  const balance = income - expense;
-
-  console.log(`Income: ${income}`);
-  console.log(`Expense: ${expense}`);
-  console.log(`Balance: ${balance}`);
-
-  const continueApp = keyInYNStrict("Do you want to return to the main menu?");
-
-  if (continueApp) {
-    accountingPage(); // Ana menüye dönüyoruz
+  if (backup) {
+    console.log(`The backup process is complete.`);
   } else {
-    console.log("Exiting the application...");
+    console.log("The application was exited.");
   }
 }

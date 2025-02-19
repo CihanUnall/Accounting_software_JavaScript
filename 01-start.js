@@ -74,8 +74,8 @@ export function accountingPage() {
   console.log("||  1. Income and Expense Records        ||");
   console.log("||  2. Invoice Management                ||");
   console.log("||  3. Financial Reporting               ||");
-  console.log("||  4. Payment and Receivables Tracking  ||");
-  console.log("||  5. Data Backup and Security          ||");
+  console.log("||  4. Payment                           ||");
+  console.log("||  5. Data Backup                       ||");
   console.log("||  6. Exit Application                  ||");
   console.log("===========================================");
 
@@ -104,30 +104,3 @@ export function accountingPage() {
     console.log("Invalid choice. Try again.");
   }
 }
-
-// const choice = readlineSync.questionInt("Enter a choice (1-6): ");
-
-// if (choice === 1) {
-//   console.clear();
-
-//   recordIncome();
-// } else if (choice === 2) {
-//   console.clear();
-//   recordExpense();
-// } else if (choice === 3) {
-//   console.clear();
-//   recordPurchase();
-// } else if (choice === 4) {
-//   console.clear();
-//   recordPayment();
-// } else if (choice === 5) {
-//   console.clear();
-//   generateReport();
-// } else if (choice === 6) {
-//   console.clear();
-//   console.log("Application exited.");
-//   return;
-// } else {
-//   console.log("Invalid choice. Try again.");
-// }
-// }

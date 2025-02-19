@@ -1,65 +1,22 @@
 import { keyInYNStrict } from "readline-sync";
 import { accountingPage } from "./01-start.js";
 import readlineSync from "readline-sync";
-// Başlangıçta toplam gelir, gider, alışverişler ve ödemeler
-let income = 0; //gelirler
-let expenses = 0; //giderlerl
-let purchases = []; //alışverişler
-let payments = []; //ödemeler
 
 export default function recordsPage() {
+  // Başlangıçta toplam gelir, gider, alışverişler ve ödemeler
+  let income = 0; //gelirler
+  let expenses = 0; //giderlerl
+  let purchases = []; //alışverişler
+  let payments = []; //ödemeler
+  let incomeComment = [];
+  let expenseComment = [];
+
   console.clear();
   console.log("===========================================");
   console.log("||                                       ||");
   console.log("||           ACCOUTING PROGRAM           ||");
   console.log("||     Income and Expense Records        ||");
   console.log("===========================================");
-
-  function recordIncome() {
-    let incomeAmount = readlineSync.questionFloat("Enter income amount: ");
-    income += incomeAmount;
-  }
-
-  function recordExpense() {
-    let expenseAmount = readlineSync.questionFloat("Enter expense amount: ");
-    expenses += expenseAmount;
-  }
-
-  function recordPurchase() {
-    let companyName = readlineSync.question("Enter company name: ");
-    let product = readlineSync.question("Enter purchased product: ");
-    let amount = readlineSync.questionFloat("Enter purchase amount: ");
-    purchases.push({ company: companyName, product: product, amount: amount });
-    expenses += amount;
-  }
-
-  function recordPayment() {
-    let companyName = readlineSync.question("Enter payment company name: ");
-    let amount = readlineSync.questionFloat("Enter payment amount: ");
-    payments.push({ company: companyName, payment: amount });
-    income += amount;
-  }
-
-  function generateReport() {
-    console.log("Total Income: " + income);
-    console.log("Total Expenses: " + expenses);
-    console.log("Purchases: ");
-    purchases.forEach((purchase, index) => {
-      console.log(
-        `${index + 1}. Company: ${purchase.company}, Product: ${
-          purchase.product
-        }, Amount: ${purchase.amount}`
-      );
-    });
-    console.log("Payments: ");
-    payments.forEach((payment, index) => {
-      console.log(
-        `${index + 1}. Company: ${payment.company}, Payment Amount: ${
-          payment.payment
-        }`
-      );
-    });
-  }
 
   function mainMenu() {
     console.clear();
@@ -68,6 +25,7 @@ export default function recordsPage() {
     console.log("||           ACCOUTING PROGRAM           ||");
     console.log("||     Income and Expense Records        ||");
     console.log("===========================================");
+
     let choice = [];
     do {
       console.log("===========================================");
@@ -79,37 +37,129 @@ export default function recordsPage() {
       console.log("||   5 - Report                          ||");
       console.log("||   6 - Exit                            ||");
       console.log("===========================================");
-
       choice = readlineSync.questionInt("Make your choice: ");
 
-      switch (choice) {
-        case 1:
-          recordIncome();
-          break;
-        case 2:
-          recordExpense();
-          break;
-        case 3:
-          recordPurchase();
-          break;
-        case 4:
-          recordPayment();
-          break;
-        case 5:
-          generateReport();
-          break;
-        case 6:
-          console.log("Exiting...");
-          break;
-        default:
-          console.log("Invalid option!");
+      if (choice === 1) {
+        console.clear();
+        console.log("===========================================");
+        console.log("||   Select an action:                   ||");
+        console.log("||   1 - Record Income                   ||");
+        console.log("===========================================");
+        recordIncome();
+      } else if (choice === 2) {
+        console.clear();
+        console.log("===========================================");
+        console.log("||   Select an action:                   ||");
+        console.log("||   2 - Record Expense                  ||");
+        console.log("===========================================");
+        recordExpense();
+      } else if (choice === 3) {
+        console.clear();
+        console.log("===========================================");
+        console.log("||   Select an action:                   ||");
+        console.log("||   3 - Record Purchase                   ||");
+        console.log("===========================================");
+        recordPurchase();
+      } else if (choice === 4) {
+        console.clear();
+        console.log("===========================================");
+        console.log("||   Select an action:                   ||");
+        console.log("||   4 - Record Payment                  ||");
+        console.log("===========================================");
+        recordPayment();
+      } else if (choice === 5) {
+        console.clear();
+        console.log("===========================================");
+        console.log("||   Select an action:                   ||");
+        console.log("||   5 - Report                          ||");
+        console.log("===========================================");
+        generateReport();
+      } else if (choice === 6) {
+        console.clear();
+        console.log("Exiting...");
+      } else {
+        console.log("Invalid option!");
       }
     } while (choice !== 6);
   }
 
-  // Start the program
   mainMenu();
 
+  function recordIncome() {
+    //gelir
+    let commentIncome = readlineSync.question("Enter comment: ");
+    let incomeAmount = readlineSync.questionFloat("Enter income amount: ");
+    incomeComment.push({
+      commentIncome: commentIncome,
+      incomeAmount: incomeAmount,
+    });
+    income += incomeAmount;
+  }
+
+  function recordExpense() {
+    //gider
+    let commentExpense = readlineSync.question("Enter comment: ");
+    let expenseAmount = readlineSync.questionFloat("Enter expense amount: ");
+    expenseComment.push({
+      commentExpense: commentExpense,
+      expenseAmount: expenseAmount,
+    });
+    expenses += expenseAmount;
+  }
+
+  function recordPurchase() {
+    //satınalma
+    let companyName = readlineSync.question("Enter company name: ");
+    let product = readlineSync.question("Enter purchased product: ");
+    let amount = readlineSync.questionFloat("Enter purchase amount: ");
+    purchases.push({ company: companyName, product: product, amount: amount });
+    expenses += amount;
+  }
+
+  function recordPayment() {
+    //ödemeler
+    let companyName = readlineSync.question("Enter payment company name: ");
+    let amount = readlineSync.questionFloat("Enter payment amount: ");
+    payments.push({ company: companyName, payment: amount });
+    expenses += amount;
+  }
+  //--------------------------------------------Report--------------------------------
+  function generateReport() {
+    console.log(`Total Income: ${income} €`);
+
+    incomeComment.map((item) => {
+      console.log(
+        `Comment:  ${item.commentIncome}, Amount: ${item.incomeAmount} € `
+      );
+    });
+    //---------------------------------------
+
+    console.log(`Total Expenses: ${expenses} €`);
+
+    expenseComment.map((item) => {
+      console.log(
+        `Comment:  ${item.commentExpense}, Amount: ${item.expenseAmount} € `
+      );
+    });
+    //----------------------------------------------
+
+    console.log("Purchases: ");
+    purchases.map((item) => {
+      console.log(
+        `Company: ${item.company}, Product: ${item.product}, Amount: ${item.amount} €`
+      );
+    });
+    //-------------------------------------------------
+    console.log("Payments: ");
+    payments.map((item) => {
+      console.log(
+        `Company: ${item.company}, Payment Amount: ${item.payment} €`
+      );
+      console.log(`Cash on hand: ${income - expenses} €`);
+      //--------------------------------------------------------
+    });
+  }
+  //-----------------------------------------
   const continueApp = keyInYNStrict("Do you want to return to the main menu?");
 
   if (continueApp) {
