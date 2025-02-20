@@ -9,16 +9,26 @@ let users = [
   { username: "admin", password: "1234" },
   { username: "user", password: "1234" },
 ];
-
+//https://dev.to/lakatos88/ascii-themes-node-js-cli-interface-to-generate-themed-ascii-art-4ck8
 startApp();
 
 function startApp() {
   console.clear();
-  console.log("===========================================");
-  console.log("||                                       ||");
-  console.log("||           ACCOUTING PROGRAM           ||");
-  console.log("||                                       ||");
-  console.log("===========================================");
+  console.log(
+    "=================================================================================="
+  );
+
+  console.log(`
+ █████╗  ██████╗ ██████╗ ██████╗ ██╗   ██╗███╗   ██╗████████╗██╗███╗   ██╗ ██████╗   
+██╔══██╗██╔════╝██╔════╝██╔═══██╗██║   ██║████╗  ██║╚══██╔══╝██║████╗  ██║██╔════╝    
+███████║██║     ██║     ██║   ██║██║   ██║██╔██╗ ██║   ██║   ██║██╔██╗ ██║██║  ███╗    
+██╔══██║██║     ██║     ██║   ██║██║   ██║██║╚██╗██║   ██║   ██║██║╚██╗██║██║   ██║   
+██║  ██║╚██████╗╚██████╗╚██████╔╝╚██████╔╝██║ ╚████║   ██║   ██║██║ ╚████║╚██████╔╝    
+╚═╝  ╚═╝ ╚═════╝ ╚═════╝ ╚═════╝  ╚═════╝ ╚═╝  ╚═══╝   ╚═╝   ╚═╝╚═╝  ╚═══╝ ╚═════╝               `);
+
+  console.log(
+    "=================================================================================="
+  );
 
   const username = question("Enter your username: ");
 
@@ -54,7 +64,7 @@ function adminPanel() {
   users.push({ username: newUsername, password: newPassword });
   console.log(`User ${newUsername} has been created successfully!`);
 
-  const continueApp = keyInYNStrict("Do you want to return to the main menu?");
+  const continueApp = keyInYNStrict("Do you want to return to the start menu?");
   if (continueApp) {
     startApp();
   } else {
@@ -65,19 +75,44 @@ function adminPanel() {
 
 export function accountingPage() {
   console.clear();
-  console.log("===========================================");
-  console.log("||                                       ||");
-  console.log("||          ACCOUTING PROGRAM            ||");
-  console.log("||                                       ||");
-  console.log("===========================================");
-  console.log("||     Main Menu:                        ||");
-  console.log("||  1. Income and Expense Records        ||");
-  console.log("||  2. Invoice Management                ||");
-  console.log("||  3. Financial Reporting               ||");
-  console.log("||  4. Payment                           ||");
-  console.log("||  5. Data Backup                       ||");
-  console.log("||  6. Exit Application                  ||");
-  console.log("===========================================");
+  console.log(
+    "========================================================================================"
+  );
+
+  console.log(`
+    █████╗  ██████╗ ██████╗ ██████╗ ██╗   ██╗███╗   ██╗████████╗██╗███╗   ██╗ ██████╗   
+   ██╔══██╗██╔════╝██╔════╝██╔═══██╗██║   ██║████╗  ██║╚══██╔══╝██║████╗  ██║██╔════╝    
+   ███████║██║     ██║     ██║   ██║██║   ██║██╔██╗ ██║   ██║   ██║██╔██╗ ██║██║  ███╗    
+   ██╔══██║██║     ██║     ██║   ██║██║   ██║██║╚██╗██║   ██║   ██║██║╚██╗██║██║   ██║   
+   ██║  ██║╚██████╗╚██████╗╚██████╔╝╚██████╔╝██║ ╚████║   ██║   ██║██║ ╚████║╚██████╔╝    
+   ╚═╝  ╚═╝ ╚═════╝ ╚═════╝ ╚═════╝  ╚═════╝ ╚═╝  ╚═══╝   ╚═╝   ╚═╝╚═╝  ╚═══╝ ╚═════╝               `);
+  console.log(
+    "========================================================================================"
+  );
+  console.log(
+    "||     Main Menu:                                                                     ||"
+  );
+  console.log(
+    "||  1. Income and Expense Records                                                     ||"
+  );
+  console.log(
+    "||  2. Invoice Management                                                             ||"
+  );
+  console.log(
+    "||  3. Financial Reporting                                                            ||"
+  );
+  console.log(
+    "||  4. Payment                                                                        ||"
+  );
+  console.log(
+    "||  5. Data Backup                                                                    ||"
+  );
+  console.log(
+    "||  6. Exit Application                                                               ||"
+  );
+  console.log(
+    "========================================================================================"
+  );
 
   const choice = questionInt("Enter a choice (1-6): ");
 

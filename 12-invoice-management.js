@@ -3,6 +3,26 @@ import { accountingPage } from "./01-start.js";
 import readlineSync from "readline-sync";
 
 export default function invoicePage() {
+  console.clear();
+  console.log(
+    "========================================================================================"
+  );
+
+  console.log(`
+    █████╗  ██████╗ ██████╗ ██████╗ ██╗   ██╗███╗   ██╗████████╗██╗███╗   ██╗ ██████╗   
+   ██╔══██╗██╔════╝██╔════╝██╔═══██╗██║   ██║████╗  ██║╚══██╔══╝██║████╗  ██║██╔════╝    
+   ███████║██║     ██║     ██║   ██║██║   ██║██╔██╗ ██║   ██║   ██║██╔██╗ ██║██║  ███╗    
+   ██╔══██║██║     ██║     ██║   ██║██║   ██║██║╚██╗██║   ██║   ██║██║╚██╗██║██║   ██║   
+   ██║  ██║╚██████╗╚██████╗╚██████╔╝╚██████╔╝██║ ╚████║   ██║   ██║██║ ╚████║╚██████╔╝    
+   ╚═╝  ╚═╝ ╚═════╝ ╚═════╝ ╚═════╝  ╚═════╝ ╚═╝  ╚═══╝   ╚═╝   ╚═╝╚═╝  ╚═══╝ ╚═════╝               `);
+
+  console.log(
+    "                                       Invoice Management                         "
+  );
+  console.log(
+    "========================================================================================"
+  );
+
   // Fatura bilgilerini al
   let customerName = readlineSync.question("Enter customer name: ");
   let invoiceNumber = readlineSync.question("Enter invoice number: ");
@@ -24,6 +44,7 @@ export default function invoicePage() {
     paymentStatus: paymentStatus ? "Paid" : "Unpaid",
   };
   //----------------------------- Fatura yazdırmak ister misiniz?--------------------------
+
   let printInvoice = readlineSync.keyInYNStrict(
     "Do you want to print the invoice? (yes/no): "
   );
@@ -35,24 +56,37 @@ export default function invoicePage() {
     // Faturayı yazdır
     console.clear();
     console.log(
-      "======================================================================"
+      "========================================================================================"
+    );
+    console.log(`
+    █████╗  ██████╗ ██████╗ ██████╗ ██╗   ██╗███╗   ██╗████████╗██╗███╗   ██╗ ██████╗   
+   ██╔══██╗██╔════╝██╔════╝██╔═══██╗██║   ██║████╗  ██║╚══██╔══╝██║████╗  ██║██╔════╝    
+   ███████║██║     ██║     ██║   ██║██║   ██║██╔██╗ ██║   ██║   ██║██╔██╗ ██║██║  ███╗    
+   ██╔══██║██║     ██║     ██║   ██║██║   ██║██║╚██╗██║   ██║   ██║██║╚██╗██║██║   ██║   
+   ██║  ██║╚██████╗╚██████╗╚██████╔╝╚██████╔╝██║ ╚████║   ██║   ██║██║ ╚████║╚██████╔╝    
+   ╚═╝  ╚═╝ ╚═════╝ ╚═════╝ ╚═════╝  ╚═════╝ ╚═╝  ╚═══╝   ╚═╝   ╚═╝╚═╝  ╚═══╝ ╚═════╝               `);
+    console.log(
+      "                                      Invoice Management                                                "
+    );
+    console.log(
+      "========================================================================================"
     );
 
     console.log("Invoice");
     console.log(
-      `                                                     Date: ${invoice.date}`
+      `                                                                      Date: ${invoice.date}`
     );
     console.log(` `);
     console.log(
-      "                                           Invoice Number: " +
+      "                                                            Invoice Number: " +
         invoice.invoiceNumber
     );
     console.log(
-      "======================================================================"
+      "========================================================================================"
     );
 
     console.log(
-      `${invoice.amountComment}                                                     ${invoice.amount} €`
+      `${invoice.amountComment}                                                                      ${invoice.amount} €`
     );
     console.log(` `);
     console.log(` `);
@@ -66,13 +100,13 @@ export default function invoicePage() {
     console.log(` `);
     console.log(` `);
     console.log(
-      "======================================================================"
+      "========================================================================================"
     );
     console.log(`Customer      : ${invoice.customerName}`);
 
     console.log(`Payment Status: ${invoice.paymentStatus}`);
     console.log(
-      "======================================================================"
+      "========================================================================================"
     );
   } else {
     console.log("Invoice not printed.");

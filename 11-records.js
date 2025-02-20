@@ -12,31 +12,55 @@ export default function recordsPage() {
   let expenseComment = [];
 
   console.clear();
-  console.log("===========================================");
-  console.log("||                                       ||");
-  console.log("||           ACCOUTING PROGRAM           ||");
-  console.log("||     Income and Expense Records        ||");
-  console.log("===========================================");
+  console.log(
+    "========================================================================================"
+  );
+
+  console.log(`
+    █████╗  ██████╗ ██████╗ ██████╗ ██╗   ██╗███╗   ██╗████████╗██╗███╗   ██╗ ██████╗   
+   ██╔══██╗██╔════╝██╔════╝██╔═══██╗██║   ██║████╗  ██║╚══██╔══╝██║████╗  ██║██╔════╝    
+   ███████║██║     ██║     ██║   ██║██║   ██║██╔██╗ ██║   ██║   ██║██╔██╗ ██║██║  ███╗    
+   ██╔══██║██║     ██║     ██║   ██║██║   ██║██║╚██╗██║   ██║   ██║██║╚██╗██║██║   ██║   
+   ██║  ██║╚██████╗╚██████╗╚██████╔╝╚██████╔╝██║ ╚████║   ██║   ██║██║ ╚████║╚██████╔╝    
+   ╚═╝  ╚═╝ ╚═════╝ ╚═════╝ ╚═════╝  ╚═════╝ ╚═╝  ╚═══╝   ╚═╝   ╚═╝╚═╝  ╚═══╝ ╚═════╝               `);
+
+  console.log(
+    "                           Income and Expense Records                         "
+  );
+  console.log(
+    "========================================================================================"
+  );
 
   function mainMenu() {
-    console.clear();
-    console.log("===========================================");
-    console.log("||                                       ||");
-    console.log("||           ACCOUTING PROGRAM           ||");
-    console.log("||     Income and Expense Records        ||");
-    console.log("===========================================");
-
     let choice = [];
     do {
-      console.log("===========================================");
-      console.log("||   Select an action:                   ||");
-      console.log("||   1 - Record Income                   ||");
-      console.log("||   2 - Record Expense                  ||");
-      console.log("||   3 - Record Purchase                 ||");
-      console.log("||   4 - Record Payment                  ||");
-      console.log("||   5 - Report                          ||");
-      console.log("||   6 - Exit                            ||");
-      console.log("===========================================");
+      console.log(
+        "========================================================================================"
+      );
+      console.log(
+        "||   Select an action:                                                                ||"
+      );
+      console.log(
+        "||   1 - Record Income                                                                ||"
+      );
+      console.log(
+        "||   2 - Record Expense                                                               ||"
+      );
+      console.log(
+        "||   3 - Record Purchase                                                              ||"
+      );
+      console.log(
+        "||   4 - Record Payment                                                               ||"
+      );
+      console.log(
+        "||   5 - Report                                                                       ||"
+      );
+      console.log(
+        "||   6 - Exit                                                                         ||"
+      );
+      console.log(
+        "========================================================================================"
+      );
       choice = readlineSync.questionInt("Make your choice: ");
 
       if (choice === 1) {
